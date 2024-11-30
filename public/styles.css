@@ -1,0 +1,308 @@
+/* Global Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  padding: 20px;
+  background-color: #f4f4f4;
+  margin: 0;
+  color: #333;
+}
+
+/* Header Styling */
+header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+header h1 {
+  color: #333;
+  font-size: 2.5em;
+  font-weight: 600;
+}
+
+header p {
+  color: #555;
+  font-size: 1.1em;
+  margin-top: 10px;
+}
+
+/* Heading 2 */
+h2 {
+  color: #333;
+  font-size: 1.8em;
+  margin-bottom: 20px;
+}
+
+/* Form Styling */
+form {
+  margin: 20px 0;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+input, select, textarea, button {
+  margin: 10px 0;
+  padding: 12px;
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 1em;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+/* Example of styling for review text */
+.review {
+  font-style: normal; /* Remove italics */
+  color: #555; /* Subtle contrast */
+  font-size: 0.95em; /* Slightly smaller than main text */
+  line-height: 1.5; /* Increase line spacing for readability */
+  background-color: #f9f9f9; /* Optional: light background for emphasis */
+  padding: 5px;
+  border-radius: 5px; /* Rounded edges for polish */
+}
+
+/* Button Styling */
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+}
+
+button:active {
+  transform: translateY(2px);
+}
+
+/* Book List Styling */
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+li {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+li:hover {
+  transform: translateY(-5px);
+}
+
+li img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-top: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Book Information */
+li strong {
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+li p {
+  font-size: 0.95em;
+  color: #666;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+/* Sorting Links */
+.sorting-options {
+  margin-bottom: 20px;
+}
+
+.sorting-options a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.sorting-options a:hover {
+  text-decoration: underline;
+}
+
+
+/* Button Container */
+.button-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Edit Button */
+.edit-button {
+  display: inline-block;
+  padding: 8px 20px;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.edit-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* Delete Button */
+.delete-button {
+  display: inline-block;
+  padding: 8px 20px;
+  font-size: 16px;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.delete-button:hover {
+  background-color: #c0392b;
+  transform: translateY(-2px);
+}
+
+/* Form Styling */
+form {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  background: none;
+}
+
+/* Footer Styling */
+footer {
+  text-align: center;
+  margin-top: 60px;
+  font-size: 14px;
+  color: #777;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* New badge */
+.new-badge {
+  display: inline-block;
+  background-color: #2ecc71; /* Green color for 'New' badge */
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.85em;
+  font-weight: bold;
+  text-transform: uppercase;
+  animation: sparkle 1.5s infinite; /* Sparkling animation */
+}
+
+/* Badge for Default Books */
+.default-badge {
+  display: inline-block;
+  background-color: #f0ad4e;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.60em;
+  margin-left: 8px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Note for Default Books */
+.default-note {
+  font-size: 0.9em;
+  color: #888;
+  margin-top: 10px;
+  font-style: italic;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* When default note is shown */
+.default-note.show-note {
+  opacity: 1;
+}
+
+/* When buttons are hidden */
+.button-container.hide-buttons {
+  opacity: 0;
+}
+
+/* Responsive Design for Small Screens */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+
+  header h1 {
+    font-size: 2em;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  form {
+    padding: 15px;
+  }
+
+  input, select, textarea, button {
+    font-size: 1em;
+  }
+
+  .button-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .button-container a, .button-container button {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
+
+@keyframes sparkle {
+  0% {
+    text-shadow: 0 0 8px #2ecc71, 0 0 15px #2ecc71, 0 0 20px #27ae60, 0 0 30px #27ae60, 0 0 40px #2ecc71;
+  }
+  50% {
+    text-shadow: 0 0 8px #2ecc71, 0 0 15px #2ecc71, 0 0 20px #16a085, 0 0 30px #16a085, 0 0 40px #2ecc71;
+  }
+  100% {
+    text-shadow: 0 0 8px #2ecc71, 0 0 15px #2ecc71, 0 0 20px #27ae60, 0 0 30px #27ae60, 0 0 40px #2ecc71;
+  }
+}

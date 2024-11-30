@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Notes App</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <h1>Welcome to the Book Notes App</h1>
+    <p>Manage your books easily by adding, editing, and deleting them. View details such as ratings and reviews.</p>
+  </header>
+
+  <!-- Books List Section -->
+  <section id="books-list">
+    <h2>Books List</h2>
+
+    <!-- Sorting Links -->
+<div class="sorting-options">
+  <p>Sort by: 
+    <a href="/?sort=title">Title</a> | 
+    <a href="/?sort=newest">Newest</a> | 
+    <a href="/?sort=best">Best</a>
+  </p>
+</div>
+
+    <ul>
+      <% books.forEach(book => { %>
+        <li id="book-<%= book.id %>" class="<%= book.is_default ? "default-book" : "" %>">
+          <strong><%= book.title %></strong> by <%= book.author %>
+
+          <% if (book.isNew && !book.is_default) { %>
+            <!-- Show the "New" badge only if the book is not a default book -->
+            <span class="badge new-badge">New</span>
+          <% } %>
+
+          <% if (book.is_default) { %>
+            <!-- Show the "Default" badge -->
+            <span class="badge default-badge">Default</span>
+          <% } %>
+          <br>
+          <span>Rating: <%= Math.round(book.rating) %>/10</span>
+          <br>
+          <img src="<%= book.cover_url || "/images/default-cover.jpg" %>" alt="<%= book.title %> Cover" width="150" />
+          <br>
+          <p class="review"><strong>Review:</strong> <%= book.review || "No review provided." %></p>
+          <p><strong>Date Read:</strong> <%= book.date_read ? new Date(book.date_read).toLocaleDateString() : "Not specified" %></p>
+          <br>
+
+          <!-- Button Container -->
+          <div class="button-container">
+            <% if (!book.is_default) { %>
+              <a href="/books/edit/<%= book.id %>" class="edit-button" data-book-id="<%= book.id %>">Edit</a>
+              <form action="/books/delete/<%= book.id %>" method="POST" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this book?');">
+                <button type="submit" class="delete-button" data-book-id="<%= book.id %>">Delete</button>
+              </form>
+            <% } else { %>
+              <p class="default-note">Default books cannot be edited or deleted.</p>
+            <% } %>
+          </div>
+        </li>
+      <% }) %>
+    </ul>
+  </section>
+
+  <!-- Add New Book Form Section -->
+  <section id="add-book-form">
+    <h2>Add New Book</h2>
+    <% if (error) { %>
+      <div class="error-message">
+        <p><%= error %></p>
+      </div>
+    <% } %>
+
+    <form action="/books/add" method="POST">
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" required placeholder="Enter the book title">
+      <br>
+      <label for="author">Author:</label>
+      <input type="text" id="author" name="author" required placeholder="Enter the author's name">
+      <br>
+      <label for="rating">Rating:</label>
+      <select id="rating" name="rating" required>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+      <br>
+      <label for="review">Review:</label>
+      <textarea id="review" name="review" placeholder="Write your review here..."></textarea>
+      <br>
+      <label for="date_read">Date Read:</label>
+      <input type="date" id="date_read" name="date_read">
+      <br>
+      <label for="cover_url">Cover URL:</label>
+      <input type="text" id="cover_url" name="cover_url" placeholder="Enter the cover URL (optional)">
+      <br>
+      <button type="submit">Add Book</button>
+    </form>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <footer>
+      <p>&copy; <span id="current-year"></span> 2024 Book Notes App by Wattana Silangam. All rights reserved.</p>
+    </footer>    
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // JavaScript to confirm deletion of a book
+    document.querySelectorAll(".delete-button").forEach(button => {
+      button.addEventListener("click", function (event) {
+        const bookId = event.target.dataset.bookId;
+        if (!confirm(`Are you sure you want to delete book with ID ${bookId}?`)) {
+          event.preventDefault();
+        }
+      });
+    });
+    // JavaScript to set the current year in the footer
+  document.getElementById("current-year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
